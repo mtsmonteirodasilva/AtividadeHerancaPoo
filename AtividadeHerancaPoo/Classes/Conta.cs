@@ -1,18 +1,18 @@
 ﻿namespace AtividadeHerancaPoo.Classes
 {
-    internal class Banco
+    internal class Conta
     {
         public int nConta { get; set; }
         public string Agencia { get; set; }
         public string Titular { get; set; }
         public double Saldo { get; set; }
         
-        public Banco() 
+        public Conta()
         { 
         
         }
 
-        public Banco(int nConta, string Agencia, string Titular, double Saldo) 
+        public Conta(int nConta, string Agencia, string Titular, double Saldo) 
         {
             this.nConta = nConta;
             this.Agencia = Agencia;

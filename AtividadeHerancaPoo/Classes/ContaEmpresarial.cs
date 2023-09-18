@@ -1,6 +1,6 @@
 ﻿namespace AtividadeHerancaPoo.Classes
 {
-    internal class ContaEmpresarial:Banco
+    internal class ContaEmpresarial:Conta
     {
         public double Anuidade { get; set; }
         public double LimiteEmprestimo { get; set; }

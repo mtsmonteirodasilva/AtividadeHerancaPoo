@@ -2,7 +2,7 @@
 
 namespace AtividadeHerancaPoo.Classes
 {
-    internal class ContaEstudante:Banco
+    internal class ContaEstudante:Conta
     {
         public double LimiteChequeEspecial { get; set; }
         public string Cpf { get; set; }
