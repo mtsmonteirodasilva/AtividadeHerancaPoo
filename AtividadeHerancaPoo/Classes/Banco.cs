@@ -20,9 +20,10 @@
             this.Saldo = Saldo;
         }
 
+         public double resultado = 0;
         public void Depositar(double valor)
         { 
-            double resultado = Saldo + valor;
+            resultado = Saldo + valor;
             Console.WriteLine($"Deposito de {valor} realizado!");
             Console.WriteLine($"Seu saldo atual é de {resultado}");
         }

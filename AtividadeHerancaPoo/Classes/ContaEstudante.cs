@@ -23,9 +23,9 @@ namespace AtividadeHerancaPoo.Classes
         public override void Sacar(double valorSaque)
         {
             
-            double saque2 = (Saldo + LimiteChequeEspecial) - valorSaque;
+            double saque2 = (resultado + LimiteChequeEspecial) - valorSaque;
             Console.WriteLine($"\nO valor do saque foi de {valorSaque}");
-            Console.WriteLine($"Seu saldo atual é de{saque2}");
+            Console.WriteLine($"Seu saldo atual é de {saque2}");
         }
     }
 }

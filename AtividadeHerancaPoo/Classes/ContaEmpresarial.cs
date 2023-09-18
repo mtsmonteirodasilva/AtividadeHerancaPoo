@@ -6,6 +6,11 @@
         public double LimiteEmprestimo { get; set; }
         public double TotalEmprestimo { get; set; } 
 
+        public ContaEmpresarial() 
+        {
+        
+        }
+
         public ContaEmpresarial(double Anuidade, double LimiteEmprestimo, double TotalEmprestimo, int nConta, string Agencia, string Titular, double Saldo)
             :base(nConta, Agencia, Titular, Saldo)
         { 
@@ -14,19 +19,19 @@
             this.TotalEmprestimo = TotalEmprestimo;
         }
 
-        public double void FazerEmprestimo(double valor)
-        {
-            
-            if(Saldo <= 0)
+        public void FazerEmprestimo(double valorEmprestimo)
+        {       
+            if(LimiteEmprestimo <= valorEmprestimo)
             {
                 Console.WriteLine("O valor de empréstimo não pode ser concedido!");
             }
-            else if(Saldo > 0) 
+            else if(LimiteEmprestimo > valorEmprestimo)
             {
-                double esprestimo = Saldo + valor;
-                Console.WriteLine("O empréstimo foi realizado com sucesso!");
+                double emprestimo = Saldo + valorEmprestimo;
+                Console.WriteLine($"O empréstimo de {emprestimo} foi realizado com sucesso!");
             }
         }
+
         public override void Sacar(double valorSaque)
         {
             if(valorSaque <= 5000)
@@ -34,9 +39,10 @@
                 double saque = Saldo - valorSaque;
                 Console.WriteLine($"O valor de saque foi de {saque}");
             }
-            else
+            else if(valorSaque > 5000)
             {
-                Console.WriteLine("Ñ é possivel realizar saque, voce já atingiu o limite de hoje.");
+                double saque2 = (Saldo - valorSaque - 5);
+                Console.WriteLine($"O valor de saque foi de {saque2}");
             }
            
         }
