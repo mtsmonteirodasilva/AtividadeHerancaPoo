@@ -24,8 +24,8 @@ namespace AtividadeHerancaPoo.Classes
         {
             
             double saque2 = (resultado + LimiteChequeEspecial) - valorSaque;
-            Console.WriteLine($"\nO valor do saque foi de {valorSaque}");
-            Console.WriteLine($"Seu saldo atual é de {saque2}");
+            Console.WriteLine($"O valor do saque foi de {valorSaque}");
+            Console.WriteLine($"Seu saldo atual é de {saque2} \n");
         }
     }
 }

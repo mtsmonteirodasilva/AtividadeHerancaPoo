@@ -28,7 +28,7 @@
             else if(LimiteEmprestimo > valorEmprestimo)
             {
                 double emprestimo = Saldo + valorEmprestimo;
-                Console.WriteLine($"O empréstimo de {emprestimo} foi realizado com sucesso!");
+                Console.WriteLine($"O empréstimo de {valorEmprestimo} foi realizado com sucesso!");
             }
         }
 
@@ -36,13 +36,15 @@
         {
             if(valorSaque <= 5000)
             {
-                double saque = Saldo - valorSaque;
-                Console.WriteLine($"O valor de saque foi de {saque}");
+                double saque = resultado - valorSaque;
+                Console.WriteLine($"O valor de saque foi de {valorSaque}");
+                Console.WriteLine($"Seu saldo é de {saque}");
             }
             else if(valorSaque > 5000)
             {
-                double saque2 = (Saldo - valorSaque - 5);
-                Console.WriteLine($"O valor de saque foi de {saque2}");
+                double saque2 = (resultado - valorSaque - 5);
+                Console.WriteLine($"Saque feito com sucesso!");
+                Console.WriteLine($"\nSeu saldo é de {saque2}");
             }
            
         }
