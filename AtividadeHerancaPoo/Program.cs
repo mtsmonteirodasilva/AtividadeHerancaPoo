@@ -6,34 +6,126 @@ class Program
 {
     static void Main(string[] args)
     {
-        ContaEstudante ce = new ContaEstudante();
-        ce.nConta = 1;
-        ce.Agencia = "001";
-        ce.Titular = "Matheus Monteiro da Silva";
-        ce.Saldo = 2000;
-        ce.LimiteChequeEspecial = 1000;
-        ce.Cpf = "065-021-762-40";
-        ce.NomeInstituicao = "Ifro";
-        ce.Depositar(5000);
-        ce.Sacar(9000);
+        int Nconta = 002;
+        string agencia = "JIPA  ";
 
-        ContaEmpresarial cem = new ContaEmpresarial();
-        cem.nConta = 2;
-        cem.Agencia = "002";
-        cem.Titular = "Josemar Victor Pereira da Silva";
-        cem.Saldo = 2000;
-        cem.Depositar(5000);
-        cem.Anuidade = 3000;
-        cem.LimiteEmprestimo = 1000;
-        cem.TotalEmprestimo = 1000;
-        cem.FazerEmprestimo(1500);
-        cem.Sacar(500);
-        
-        Conta conta = new Conta();
-        conta.nConta = 3;
-        conta.Agencia = "003";
-        conta.Titular = "Elias";
-        conta.Saldo = 8000;
+        while (true)
+        {
+            Console.WriteLine("Digite \n " + "1 Para conta normal, \n " + "2 Para conta estudamte \n " + "3 Para conta espresarial \n " + "4 Para sair");
+            int opcao = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Digite o nome do titular: ");
+            string nomeTitular = Console.ReadLine();
+
+            if (opcao == 1)
+            {
+                Conta c = new Conta(Nconta, agencia, nomeTitular, 0);
+                while (true)
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar e 3 para sair");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+
+                    if(opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        c.Depositar(valor);
+                        Console.WriteLine($"Novo saldo {c.Saldo}");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        c.Sacar(valor);
+                        Console.WriteLine($"Novo saldo {c.Saldo}");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            
+            else if (opcao == 2)
+            {
+                Console.WriteLine("Digite o CPF do estudante");
+                string cpf = Console.ReadLine();
+
+                Console.WriteLine("Informe a instituicao");
+                string instituicao = Console.ReadLine();
+
+                ContaEstudante ce = new ContaEstudante(cpf,instituicao,Nconta, agencia, nomeTitular, 0);
+
+                while (true)
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar e 3 para sair");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+
+                    if (opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        ce.Depositar(valor);
+                        Console.WriteLine($"Novo saldo {ce.Saldo}");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        ce.Sacar(valor);
+                        Console.WriteLine($"Novo saldo {ce.Saldo}");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            else if (opcao == 3)
+            {
+                ContaEmpresarial cempresarial = new ContaEmpresarial(1000, 2000, 1000, Nconta, agencia, nomeTitular, 0);
+                Nconta += 1;
+
+                while(true) 
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar e 3 para fazer empretimo e 4 para sair");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+
+                    if (opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        cempresarial.Depositar(valor);
+                        Console.WriteLine($"Novo saldo {cempresarial.Saldo}");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        cempresarial.Sacar(valor);
+                        Console.WriteLine($"Novo saldo {cempresarial.Saldo}");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.WriteLine("Digite o valor: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        cempresarial.FazerEmprestimo(valor);
+                        Console.WriteLine($"Novo saldo {cempresarial.Saldo}");
+                    }
+                    else if (opcao == 4)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            else if(opcao == 4) 
+            {
+                break;            
+            }
+        }        
     }
 }
 

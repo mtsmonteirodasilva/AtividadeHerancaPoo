@@ -6,11 +6,7 @@
         public double LimiteEmprestimo { get; set; }
         public double TotalEmprestimo { get; set; } 
 
-        public ContaEmpresarial() 
-        {
-        
-        }
-
+    
         public ContaEmpresarial(double Anuidade, double LimiteEmprestimo, double TotalEmprestimo, int nConta, string Agencia, string Titular, double Saldo)
             :base(nConta, Agencia, Titular, Saldo)
         { 
@@ -19,34 +15,36 @@
             this.TotalEmprestimo = TotalEmprestimo;
         }
 
-        public void FazerEmprestimo(double valorEmprestimo)
-        {       
-            if(LimiteEmprestimo <= valorEmprestimo)
-            {
-                Console.WriteLine("O valor de empréstimo não pode ser concedido!");
-            }
-            else if(LimiteEmprestimo > valorEmprestimo)
-            {
-                double emprestimo = Saldo + valorEmprestimo;
-                Console.WriteLine($"O empréstimo de {valorEmprestimo} foi realizado com sucesso!");
-            }
-        }
+      
 
-        public override void Sacar(double valorSaque)
+        public override void Sacar(double valor)
         {
-            if(valorSaque <= 5000)
+            if(valor <= Saldo) 
             {
-                double saque = resultado - valorSaque;
-                Console.WriteLine($"O valor de saque foi de {valorSaque}");
-                Console.WriteLine($"Seu saldo é de {saque}");
+                Saldo -= valor;
+                if (valor >= 5000)
+                {
+                    Saldo -= 5;
+                }
             }
-            else if(valorSaque > 5000)
+           else
             {
-                double saque2 = (resultado - valorSaque - 5);
-                Console.WriteLine($"Saque feito com sucesso!");
-                Console.WriteLine($"\nSeu saldo é de {saque2}");
+                Console.WriteLine("Saldo insuficiente! ");
             }
            
+        }
+        public void FazerEmprestimo(double valor)
+        {
+           if(valor <= LimiteEmprestimo - TotalEmprestimo)
+           {
+                Saldo += valor;
+                TotalEmprestimo += valor;
+                Console.WriteLine($"Emprestimo realizado com sucesso");
+            }
+           else 
+           {
+                Console.WriteLine("Valor indisponivível! ");
+           }
         }
 
     }

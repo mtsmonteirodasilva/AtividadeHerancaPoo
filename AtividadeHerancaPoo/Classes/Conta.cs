@@ -8,10 +8,9 @@
         public double Saldo { get; set; }
         
         public Conta()
-        { 
-        
-        }
+        {
 
+        }
         public Conta(int nConta, string Agencia, string Titular, double Saldo) 
         {
             this.nConta = nConta;
@@ -20,22 +19,18 @@
             this.Saldo = Saldo;
         }
 
-         public double resultado = 0;
         public void Depositar(double valor)
         { 
-            resultado = Saldo + valor;
-            Console.WriteLine($"Deposito de {valor} realizado!");
-            Console.WriteLine($"Seu saldo atual é de {resultado}");
+            Saldo += valor;
         }
 
-        public virtual void Sacar(double valorSaque) 
+        public virtual void Sacar(double valor) 
         { 
-            if(Saldo >= valorSaque)
+            if(Saldo >= valor)
             {
-                double saque = Saldo - valorSaque;
-                Console.WriteLine($"O valor de saque foi de {saque}");
+                Saldo -= valor;
             }
-            else if(Saldo < valorSaque)
+            else 
             {
                 Console.WriteLine("Ñ é possível realizar este saque!");
             }

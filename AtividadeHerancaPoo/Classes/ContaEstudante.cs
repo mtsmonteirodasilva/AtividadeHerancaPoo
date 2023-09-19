@@ -8,11 +8,8 @@ namespace AtividadeHerancaPoo.Classes
         public string Cpf { get; set; }
         public string NomeInstituicao { get; set; }
 
-        public ContaEstudante()
-        {
-
-        }
-        public ContaEstudante(double LimiteChequeEspecial, string Cpf, string NomeInstituicao, int nConta, string Agencia, string Titular, double Saldo)
+       
+        public ContaEstudante( string Cpf, string NomeInstituicao, int nConta, string Agencia, string Titular, double Saldo)
             :base(nConta,Agencia, Titular, Saldo) 
         { 
             this.LimiteChequeEspecial = LimiteChequeEspecial;
@@ -20,12 +17,16 @@ namespace AtividadeHerancaPoo.Classes
             this.NomeInstituicao = NomeInstituicao;
         }
         
-        public override void Sacar(double valorSaque)
+        public override void Sacar(double valor)
         {
-            
-            double saque2 = (resultado + LimiteChequeEspecial) - valorSaque;
-            Console.WriteLine($"O valor do saque foi de {valorSaque}");
-            Console.WriteLine($"Seu saldo atual é de {saque2} \n");
+            if(valor <= Saldo +LimiteChequeEspecial)
+            {
+                Saldo -= valor;
+            }
+            else
+            {
+                Console.WriteLine("Saldo insuficiente");
+            }
         }
     }
 }
